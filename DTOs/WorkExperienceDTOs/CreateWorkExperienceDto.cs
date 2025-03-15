@@ -1,9 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ResumeHandler.Models
+namespace ResumeHandler.DTOs.WorkExperienceDTOs
 {
-    public class WorkExperience
+    public class CreateWorkExperienceDto
     {
         [Key]
         public int WorkID { get; set; }
@@ -16,6 +15,7 @@ namespace ResumeHandler.Models
         [StringLength(100, ErrorMessage = "Company name can't exceed 100 characters. ")]
         public string CompanyName { get; set; }
 
+        [Required]
         public string Description { get; set; }
 
         [Required]
@@ -23,10 +23,6 @@ namespace ResumeHandler.Models
 
         public DateOnly EndDate { get; set; }
 
-        [Required]
-        [ForeignKey("User")]
-        public int? UserID_FK { get; set; }
-
-        public virtual User User { get; set; }
+        public int UserID { get; set; }
     }
 }
